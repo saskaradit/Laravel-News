@@ -9,6 +9,6 @@
             <option value="{{$new->id}}" class="text-dark special">{{$new->title}}</option>
             @endforeach
         </select>
-        <button type="submit" class="btn btn-light">Create</button>
+        <button type="submit" class="btn btn-light">Change Headline</button>
     </form>
 @endsection
