@@ -7,8 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 class Category extends Model
 {
     //
+    
     public function categories ()
     {
         return  $this->belongsToMany('App\Category', 'category_id', 'id');
+    }
+    public function news ()
+    {
+        return  $this->hasMany('App\News');
     }
 }

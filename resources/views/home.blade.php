@@ -41,5 +41,18 @@
             @endforeach
         </div>
     </div>
+    <div class="row mx-auto">
+        @foreach ($categories as $cat)
+            <div class="col-3">
+                <h4 class="card-header bg-white"><a href="/news/category/{{$cat->name}}"  class=" text-dark news-header"> {{$cat->name}} </a></h4>
+                @foreach ($cat->news as $new)
+                    <div class="card-body mb-2">
+                        <p class="card-text text-dark"><a href="/news/show/{{$new->id}}" class="text-dark news-header">{{$new->title}} </a>
+                        </p>
+                    </div>
+                @endforeach
+            </div>
+        @endforeach
+    </div>
 </div>
 @endsection
