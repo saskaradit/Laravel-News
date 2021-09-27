@@ -1,0 +1,29 @@
+.headline-bg {
+    color: white;
+    height: 110%;
+    width: 150vw;
+    background-color: black;
+    position: absolute;
+    top: -10%;
+    left: -50vw;
+    z-index: -1;
+}
+.bg-black {
+    background-color: black !important;
+}
+body {
+    overflow-x: hidden !important;
+}
+
+.fixed-top {
+    background-color: black;
+    transition: background-color 500ms linear !important;
+}
+.fixed-top.scrolled {
+    background-color: #fff !important;
+    color: black !important;
+    transition: background-color 500ms linear;
+}
+.fixed-top.scrolled .container a {
+    color: black !important;
+}
