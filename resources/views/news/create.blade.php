@@ -17,7 +17,7 @@
         </div>
         
         <div class="mb-3">
-            <textarea class="form-control" placeholder="Write your story" style="height: 100px" name="content"></textarea>
+            <textarea class="form-control" placeholder="Write your story" style="height: 200px" name="content"></textarea>
         </div>
         <div class="mb-3">
             <label for="image" class="form-label">Default file input example</label>

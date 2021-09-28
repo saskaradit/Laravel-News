@@ -11,6 +11,7 @@ class News extends Model
         return  $this->hasOne('App\Category', 'id', 'category_id');
     }
 
+    protected $dates = ['date'];
     //kalo ada nama user
     // public function user ()
     // {

@@ -14,7 +14,7 @@
         </select>
 
         <div class="mb-3">
-            <textarea class="form-control" style="height: 100px" name="content">{{$news->content}}</textarea>
+            <textarea class="form-control" style="height: 200px" name="content">{{$news->content}}</textarea>
         </div>
         <div class="mb-3">
             <input type="text" name="video" placeholder="Input url youtube"  class="form-control" value="{{$news->video}}">

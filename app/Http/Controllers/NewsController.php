@@ -37,8 +37,10 @@ class NewsController extends Controller
         // Get current headline, make sure the headline is only one
         $current = News::where('headline',true)->paginate(1);
         // dd($current[0]);
-        $current[0]->headline = 0;
-        $current[0]->save();
+        if($current[0]){
+            $current[0]->headline = 0;
+            $current[0]->save();
+        }
         $news = News::find($request->input('news'));
         // create new headline
         $news->headline = true;
@@ -68,6 +70,7 @@ class NewsController extends Controller
         // create news
         // Handle Image
         // Please run this first => php artisan storage:link
+        
         if($request->hasFile('image')){
             // Get filename with extension
             $fileNameWithExt = $request->file('image')->getClientOriginalName();
@@ -99,13 +102,15 @@ class NewsController extends Controller
 
     public function show($id)
     {
-
         $news = News::find($id); 
         $news->views = $news->views +1;
         $news->save();
-        $comments = Comments::where('newsid',$news->id)->orderBy('created_at','desc')->paginate(5);
+        // $news->created_at = $news->created_at->createFromFormat('m-Y');
+        // dd($news->created_at);
+        $category = Category::where('id',$news->category_id)->first();
+        $comments = Comments::where('newsid',$news->id)->orderBy('created_at','desc')->paginate(10);
         // run this for embed youtube "composer require bensampo/laravel-embed" 
-        return view('news.show')->with('news', $news)->with('comments',$comments);
+        return view('news.show')->with('news', $news)->with('comments',$comments)->with('category',$category);
     }
 
     public function edit($id)
@@ -143,12 +148,13 @@ class NewsController extends Controller
         $news->title = $request->input('title');
         $news->content = $request->input('content');
         $news->category_id = $request->input('category');
+        $news->video = $request->input('video');
         if($request->hasFile('image')){
             $news->image = $fileNameStore;
         }
         $news->save();
 
-        return redirect('/')->with('success', 'news Updated');
+        return back();
     }
 
     public function destroy($id)
@@ -167,7 +173,7 @@ class NewsController extends Controller
 
     public function categories($name){
         $category = Category::where('name',$name)->first();
-        $news = News::where('category_id', $category->id)->paginate(5);
+        $news = News::where('category_id', $category->id)->paginate(20);
         return view('news.index')->with('news',$news)->with('category',$category);
     }
 

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 //contextPath, nama file controlnya@functionnya, nama saja
 Route::get('/', 'HomeController@index')->name('home');
+Route::post('/', 'HomeController@search');
 
 Auth::routes();
 Route::get('/temp-reg', 'HomeController@tempReg');
@@ -22,6 +23,7 @@ Route::post('/news/{newsID}/edit', 'NewsController@update');
 
 Route::get('/news/new', 'NewsController@create')->name('createpost');
 Route::post('/news/new', 'NewsController@store');
+
 
 Route::delete('/news/{newsID}','NewsController@destroy');
 

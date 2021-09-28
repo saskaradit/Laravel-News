@@ -26,6 +26,8 @@
 
 </head>
 <body>
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v12.0" nonce="9LT6OrGb"></script>
     <div id="app"  style="height:100%; min-height:100vh">
         <nav class="navbar navbar-expand-md navbar-dark bg-black text-light shadow-sm fixed-top ">
             <div class="container">
@@ -86,6 +88,10 @@
                                 </div>
                             </li>
                         @endguest
+                        <form class="form-inline my-2 my-lg-0" method="POST" >
+                            @csrf
+                            <input class="form-control mx-sm-1" type="search" placeholder="Search News" aria-label="Search" name="query" value="">
+                        </form>
                     </ul>
                 </div>
             </div>
@@ -100,7 +106,7 @@
       <div class="row">
         <div class="col-12 col-md">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="d-block mb-2"><circle cx="12" cy="12" r="10"></circle><line x1="14.31" y1="8" x2="20.05" y2="17.94"></line><line x1="9.69" y1="8" x2="21.17" y2="8"></line><line x1="7.38" y1="12" x2="13.12" y2="2.06"></line><line x1="9.69" y1="16" x2="3.95" y2="6.06"></line><line x1="14.31" y1="16" x2="2.83" y2="16"></line><line x1="16.62" y1="12" x2="10.88" y2="21.94"></line></svg>
-          <small class="d-block mb-3 text-muted">© 2017-2018</small>
+          <small class="d-block mb-3 text-muted">© 2021</small>
         </div>
         <div class="col-6 col-md">
           <h5>Features</h5>
@@ -114,30 +120,12 @@
           </ul>
         </div>
         <div class="col-6 col-md">
-          <h5>Resources</h5>
+          <h5>Categories</h5>
           <ul class="list-unstyled text-small">
-            <li><a class="text-muted" href="#">Resource</a></li>
-            <li><a class="text-muted" href="#">Resource name</a></li>
-            <li><a class="text-muted" href="#">Another resource</a></li>
-            <li><a class="text-muted" href="#">Final resource</a></li>
-          </ul>
-        </div>
-        <div class="col-6 col-md">
-          <h5>Resources</h5>
-          <ul class="list-unstyled text-small">
-            <li><a class="text-muted" href="#">Business</a></li>
-            <li><a class="text-muted" href="#">Education</a></li>
-            <li><a class="text-muted" href="#">Government</a></li>
-            <li><a class="text-muted" href="#">Gaming</a></li>
-          </ul>
-        </div>
-        <div class="col-6 col-md">
-          <h5>About</h5>
-          <ul class="list-unstyled text-small">
-            <li><a class="text-muted" href="#">Team</a></li>
-            <li><a class="text-muted" href="#">Locations</a></li>
-            <li><a class="text-muted" href="#">Privacy</a></li>
-            <li><a class="text-muted" href="#">Terms</a></li>
+            <li><a class="text-muted" href="/news/category/World">World</a></li>
+            <li><a class="text-muted" href="/news/category/Politics">Politics</a></li>
+            <li><a class="text-muted" href="/news/category/Travel">Travel</a></li>
+            <li><a class="text-muted" href="/news/category/Culture">Culture</a></li>
           </ul>
         </div>
       </div>

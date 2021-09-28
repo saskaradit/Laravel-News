@@ -14,6 +14,18 @@
 body {
     overflow-x: hidden !important;
 }
+.headline {
+    width: 50vw !important;
+    word-wrap: break-word !important;
+    margin: auto;
+}
+.headline a {
+    display: block;
+    width: 50vw !important;
+    word-wrap: break-word !important;
+    margin: auto;
+    white-space: normal;
+}
 
 .fixed-top {
     background-color: black;

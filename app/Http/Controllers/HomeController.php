@@ -15,7 +15,7 @@ class HomeController extends Controller
         //Nampilin kehalaman
         $category = Category::orderBy('created_at','desc')->paginate(5);
         $headline = News::where('headline',true)->paginate(1);
-        // dd($category[0]->news);
+        // dd($category[0]->news->isEmpty());
         // dd(Auth::user()->id);
         $news = News::orderBy('created_at','desc')->paginate(5);
         $trends = News::orderBy('views','desc')->paginate(5);
@@ -38,5 +38,12 @@ class HomeController extends Controller
         ]);
 
             return redirect('/');
+    }
+
+    public function search(Request $request){
+        $query = $request->input('query');
+        
+        $news = News::where('title','LIKE','%'.$query.'%')->paginate(10);
+        return view('news.index')->with('news',$news);
     }
 }
