@@ -45,6 +45,7 @@
                     </div>
                 </div>
             @endforeach
+            {{$news->links()}}
         </div>
     </div>
     <div class="row mx-auto">

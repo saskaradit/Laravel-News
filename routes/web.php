@@ -13,6 +13,8 @@ Route::post('/user-additional-data', 'HomeController@insertAdditionalInformation
 // Users
 Route::get('/users', 'UserController@index')->name('user');
 Route::get('/users/{userID}', 'UserController@show');
+Route::get('/users/edit/{userID}', 'UserController@edit');
+Route::post('/users/edit/{userID}', 'UserController@update');
 
 // News
 Route::get('/news/show/{newsID}', 'NewsController@show');

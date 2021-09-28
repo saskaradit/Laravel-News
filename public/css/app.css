@@ -39,3 +39,25 @@ body {
 .fixed-top.scrolled .container a {
     color: black !important;
 }
+
+.page-item.disabled {
+    display: none;
+    background-color: black;
+}
+.page-item.active .page-link {
+    color: white !important;
+    background-color: #333 !important;
+}
+.page-link {
+    border: none !important;
+    color: black !important;
+    background-color: transparent !important;
+}
+.page-link:hover {
+    color: #333 !important;
+}
+.page-link:hover {
+    border: none;
+    background-color: #333 !important;
+    color: #f4f4f4 !important;
+}

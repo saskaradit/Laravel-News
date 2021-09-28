@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -47,8 +48,12 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        $user = User::find($id);
-        return view('user.show')->with('user', $user);
+        if(Auth::user() && Auth::user()->id == $id){
+            $user = User::find($id);
+            return view('user.show')->with('user', $user);
+        }else{
+            return redirect('/');
+        }
     }
 
     /**
@@ -57,9 +62,14 @@ class UserController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function edit($id)
     {
-        //
+       $user = User::find($id);
+        // Check User or Admin
+        if(Auth::user() && Auth::user()->id == $id){
+            return view('user.edit')->with('user',$user);
+        }
+        return redirect('/')->with('error', 'Unauthorized');
     }
 
     /**
@@ -69,9 +79,21 @@ class UserController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request, $id)
     {
-        //
+
+        // update article
+        $user = User::find($id);
+        $user->name = $request->input('name');
+        $user->email = $request->input('email');
+        if($request->input('password') != null && $request->input('new-password') != null){
+            if($request->input('password') == $request->input('new=password')){
+                $user->password = $request->input('password');
+            }
+        }
+        $user->save();
+
+        return view('user.show')->with('user', $user);
     }
 
     /**
