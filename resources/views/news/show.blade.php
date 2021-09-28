@@ -86,8 +86,7 @@
         <form action="" method="POST" class="px-4 col-4 mx-auto">
             @csrf
             <div class="mb-5 text-center">
-                <input type="text" name="comment" placeholder="Input Comment"  class="form-control mb-2">
-                <button type="submit" class="btn btn-dark text-center">Post</button>
+                <input type="text" name="comment" placeholder="Input Comment"  class="form-control mb-2" style="display:inline-block">
             </div>
         </form>
         @endif

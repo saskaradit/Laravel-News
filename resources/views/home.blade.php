@@ -11,7 +11,7 @@
                             <h4 class="text-white text-center">Headline</h4>
                             @if($headline->image != 'null')
                                 <img src="storage/images/{{$headline->image}}" alt="Lights" style="width:100%">
-                                @endif
+                            @endif
                         </a>
                 </div>
                 <h1 class="card-title text-center mt-2 mb-5 text-white headline"><a class="badge text-white" href="/news/show/{{$headline->id}}">{{$headline->title}}</a></h1>
@@ -20,7 +20,7 @@
     @endif
     <div class="row">
         <div class="col-3">
-            <h3 >Trending</h3>
+            <h3 >Latest Trendings</h3>
             @foreach ($trends as $trend)
                 <div class="card mt-3 bg-dark">
                     @if($trend->image != 'null')

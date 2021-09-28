@@ -15,10 +15,9 @@ class HomeController extends Controller
         //Nampilin kehalaman
         $category = Category::orderBy('created_at','desc')->paginate(5);
         $headline = News::where('headline',true)->paginate(1);
-        // dd($category[0]->news->isEmpty());
-        // dd(Auth::user()->id);
+
         $news = News::orderBy('created_at','desc')->paginate(5);
-        $trends = News::orderBy('views','desc')->paginate(5);
+        $trends = News::orderBy('created_at','desc')->orderBy('views','desc')->paginate(5);
         return view('home')->with('news',$news)->with('trends',$trends)->with('headline',$headline[0])->with('categories',$category);
     }
 

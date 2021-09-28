@@ -46,50 +46,29 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto text-light">
                         <!-- Authentication Links -->
-                        <li class="nav-item">
-                            <a class="nav-link text-light" href="/news/category/World">World</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-light" href="/news/category/Politics">Politics</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-light" href="/news/category/Culture">Culture</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-light" href="/news/category/Travel">Travel</a>
-                        </li>
+                        <li class="nav-item"><a class="nav-link text-light" href="/news/category/World">World</a></li>
+                        <li class="nav-item"><a class="nav-link text-light" href="/news/category/Politics">Politics</a></li>
+                        <li class="nav-item"><a class="nav-link text-light" href="/news/category/Culture">Culture</a></li>
+                        <li class="nav-item"><a class="nav-link text-light" href="/news/category/Travel">Travel</a></li>
                         @guest
-                        <li class="nav-item">
-                            <a class="nav-link text-light" href="{{ route('login') }}">{{ __('Login') }}</a>
-                        </li>
+                        <li class="nav-item"><a class="nav-link text-light" href="{{ route('login') }}">{{ __('Login') }}</a></li>
                         @else
                         @if (Auth::user()->role == 'Admin')
-                            <li class="nav-item">
-                                <a class="nav-link text-light" href="{{ route('createpost') }}">Create News</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-light" href="/news/headline">Change Headline</a>
-                            </li>
+                            <li class="nav-item"><a class="nav-link text-light" href="{{ route('createpost') }}">Create News</a></li>
+                            <li class="nav-item"><a class="nav-link text-light" href="/news/headline">Change Headline</a></li>
                         @endif
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link text-light dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
+                            <li class="nav-item dropdown"><a id="navbarDropdown" class="nav-link text-light dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                {{ Auth::user()->name }}
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                    onclick="event.preventDefault();
-                                                    document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">{
+                                        { __('Logout') }}
                                     </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">@csrf</form>
                                 </div>
                             </li>
                         @endguest
-                        <form class="form-inline my-2 my-lg-0" method="POST" >
-                            @csrf
+                        <form class="form-inline my-2 my-lg-0" method="POST" > @csrf
                             <input class="form-control mx-sm-1" type="search" placeholder="Search News" aria-label="Search" name="query" value="">
                         </form>
                     </ul>
@@ -107,17 +86,6 @@
         <div class="col-12 col-md">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="d-block mb-2"><circle cx="12" cy="12" r="10"></circle><line x1="14.31" y1="8" x2="20.05" y2="17.94"></line><line x1="9.69" y1="8" x2="21.17" y2="8"></line><line x1="7.38" y1="12" x2="13.12" y2="2.06"></line><line x1="9.69" y1="16" x2="3.95" y2="6.06"></line><line x1="14.31" y1="16" x2="2.83" y2="16"></line><line x1="16.62" y1="12" x2="10.88" y2="21.94"></line></svg>
           <small class="d-block mb-3 text-muted">© 2021</small>
-        </div>
-        <div class="col-6 col-md">
-          <h5>Features</h5>
-          <ul class="list-unstyled text-small">
-            <li><a class="text-muted" href="#">Cool stuff</a></li>
-            <li><a class="text-muted" href="#">Random feature</a></li>
-            <li><a class="text-muted" href="#">Team feature</a></li>
-            <li><a class="text-muted" href="#">Stuff for developers</a></li>
-            <li><a class="text-muted" href="#">Another one</a></li>
-            <li><a class="text-muted" href="#">Last time</a></li>
-          </ul>
         </div>
         <div class="col-6 col-md">
           <h5>Categories</h5>
